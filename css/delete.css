@@ -1,0 +1,19 @@
+input {
+  border: 1.5px solid white;
+  border-radius: 5px;
+}
+
+button {
+  border: 1.5px solid white;
+  border-radius: 5px;
+  background-color: white;
+  color: var(--dark-purple);
+  cursor: pointer;
+}
+
+button:hover {
+  border: 1.5px solid var(--light-purple);
+  border-radius: 5px;
+  background-color: var(--light-purple);
+  color: white;
+}
