@@ -30,7 +30,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `contatos` (
   `nome` varchar(40) CHARACTER SET latin1 DEFAULT NULL,
   `email` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET latin1 NOT NULL
+  `password` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `birthdate` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `member number` varchar(255) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

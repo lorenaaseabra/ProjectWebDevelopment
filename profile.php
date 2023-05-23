@@ -16,10 +16,10 @@ $name = $email = "";
 
 switch ($_SERVER["REQUEST_METHOD"]){
 	case 'POST':
-		$codigo = $_POST['codigo'];
+		$memberNumber = $_POST['memberNumber'];
 		break;
 	case 'GET':
-		$codigo = $_GET['codigo'];
+		$memberNumber = $_GET['memberNumber'];
 		break;
 }
 
@@ -53,13 +53,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
 
 	if ($nameErr =="" AND $emailErr == ""){
-		$query = "UPDATE contatos SET name = '$name', email = '$email' WHERE codigo = $codigo";
+		$query = "UPDATE contatos SET name = '$name', email = '$email' WHERE memberNumber = $memberNumber";
 		$result = mysqli_query ($conn, $query);	
 	}
 
 }
 
-$query = "SELECT * FROM contatos WHERE codigo=$codigo";
+$query = "SELECT * FROM contatos WHERE memberNumber=$memberNumber";
 $result = mysqli_query ($conn, $query);
 $row = mysqli_fetch_assoc ($result);
 
@@ -129,7 +129,7 @@ $row = mysqli_fetch_assoc ($result);
             <div>
               <div>
                 <div>
-                  <input name="codigo" type="hidden" value="<?PHP echo $codigo; ?>" />
+                  <input name="memberNumber" type="hidden" value="<?PHP echo $memberNumber; ?>" />
                   <button name="alterar" type="submit" >Save</button>
                   <button name="limpar" type="reset" >Reset</button>
                   <a href="list.php">Back to List</a>
