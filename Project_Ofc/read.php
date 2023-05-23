@@ -6,7 +6,19 @@ session_start();
 ini_set('default_charset', 'UTF-8');
 
 if( $_SESSION['login'] == TRUE){
+
+// database connection
+include ("databaseConnection.php");
+
+if(isset ($_POST['pesquisa'])) {
+	$query = "SELECT * FROM contatos WHERE nome LIKE '%$_POST[pesquisa]%' OR email LIKE '%$_POST[pesquisa]%'";
+	$result = mysqli_query ($conn, $query);	
+} else {
+	$query = "SELECT * FROM contatos";
+	$result = mysqli_query($conn, $query);
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,7 +39,7 @@ if( $_SESSION['login'] == TRUE){
         <div>
           <ul>
             <li>
-              <a href="index.php">Home</a>
+              <a href="profile.php">Home</a>
             </li>
             <li>
               <a href="read.php">List data</a>
@@ -50,53 +62,46 @@ if( $_SESSION['login'] == TRUE){
       </nav>
       <!-- /.navigation bar -->
     </header>
-
-    <main>     
-      <div><!-- container --> 
-        <div>
-          <div>
-            <div>
-              <div>
-                <h5>About the example</h5>
-              </div>
-              <div>
-                <p>The CRUD application is intended to exemplify the adoption of PHP techniques to interact with a database and manage text content. 
-                  For example, variables, cycles, decisions, forms, database maintenance, sessions, file include, etc..</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div>
-              <div>
-                <h5>The approach</h5>
-              </div>
-              <div>
-                <p>The code followed a procedural approach.</p>
-              </div>
-            </div>
-          </div>  
-          <div>
-            <div>
-              <div>
-                <h5>Suggestions</h5>
-              </div>
-              <div>
-                <p>Future developments suggestions: Migrate to object-oriented or to data-oriented.</p>
-              </div>
-            </div>
-          </div>
+    <main>
+      <div> <!-- title -->
+            <legend>C<strong>Read</strong>UD</legend>
         </div>
-        
+
+        <div> <!-- info -->
+            <p><?PHP echo mysqli_num_rows ($result)?> register(s) found.</p>
+        </div>
+
+        <div> <!-- list -->
+  			<table>
+				<tr>
+					<td width="80"><strong>ID</strong></td>
+					<td><strong>NAME</strong></td>
+					<td><strong>EMAIL</strong></td>
+					<td width="80"><strong>UPDATE</strong></td>
+					<td width="80"><strong>DELETE</strong></td>
+				</tr>
+				<?php while ($row = mysqli_fetch_assoc ($result)) { ?>
+				<tr>
+				<td><?PHP echo $row ["memberNumber"]?></td>
+				<td><?PHP echo $row ["nome"]?></td>
+				<td><?PHP echo $row ["email"]?></td>
+				<td><a href="update.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">UPDATE</a></td>
+				<td><a href="delete.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">DELETE</a></td>
+				</tr>
+				<?php } ?>
+			</table>
+
+      </div><!-- /.list -->
       </div><!-- /.container -->
-
-
-
-    </main>
 
 </body>
 </html>
-<?php 
+<?php
+// close connection
+mysqli_close ($conn);
+
 } else {
   header ('Location: loginAuthentication.php');
 } 
 ?>
+    

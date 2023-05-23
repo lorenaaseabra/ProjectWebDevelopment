@@ -16,22 +16,22 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE `usuarios` (
-  `member-number` int(11) NOT NULL,
+CREATE TABLE `contatos` (
+  `memberNumber` int(11) NOT NULL,
   `nome` varchar(40) CHARACTER SET latin1 DEFAULT NULL,
   `email` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
   `password` varchar(255) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `usuarios` (`member-number`, `nome`, `email`, `password`) VALUES
+INSERT INTO `contatos` (`memberNumber`, `nome`, `email`, `password`) VALUES
 (1040, 'Lore', 'lorenamseabra@gmail.com', '1234'),
 
 
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`member-number`);
+ALTER TABLE `contatos`
+  ADD PRIMARY KEY (`memberNumber`);
 
 
-ALTER TABLE `usuarios`
-  MODIFY `member-number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `contatos`
+  MODIFY `memberNumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
