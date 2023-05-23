@@ -17,6 +17,6 @@ if( $_SESSION['login'] == TRUE){
     header("location: list.php");
     
 } else {
-    header ('Location: login.php');
+    header ('Location: delete.php');
   } 
 ?>

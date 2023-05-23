@@ -8,11 +8,11 @@ ini_set('default_charset', 'UTF-8');
 if( $_SESSION['login'] == TRUE){
 
 // database connection
-include ("db_connect.php");
+include ("databaseConnect.php");
 
 // intialize variables
-$nomeErr = $emailErr = $birthdate = $passwordErr= "";
-$nome = $email = $birthdate = $password = $hidden = $disabled = "";
+$nameErr = $emailErr = $birthdate = $passwordErr= "";
+$name = $email = $birthdate = $password = $hidden = $disabled = "";
 
 // "cleaning data"
 function test_input($dados) {
@@ -24,14 +24,14 @@ function test_input($dados) {
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-	if (empty($_POST["nome"])) {
-		$nomeErr = "Name is required!";
+	if (empty($_POST["name"])) {
+		$nameErr = "name is required!";
 	} 
     else{
-      $nome = test_input($_POST["nome"]);
+      $name = test_input($_POST["name"]);
     // check if name only contains letters and whitespace
-        if (!preg_match("/^([^[:punct:]\d]+)$/",$nome)) {
-            $nomeErr = "Only letters and white space allowed.";
+        if (!preg_match("/^([^[:punct:]\d]+)$/",$name)) {
+            $nameErr = "Only letters and white space allowed.";
         }
 	}
 	  
@@ -61,9 +61,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $password = test_input($_POST["password"]);
     }
 
-	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == ""){
-		$query = "INSERT INTO contatos (nome, email, birthdate, password)
-		VALUES ('$nome',  '$email', '$birthdate', '$password')";
+	if ($nameErr =="" AND $emailErr == "" AND $passwordErr == ""){
+		$query = "INSERT INTO contatos (name, email, birthdate, password)
+		VALUES ('$name',  '$email', '$birthdate', '$password')";
     mysqli_query ($conn,$query);
     $disabled = "disabled";
     $hidden = "hidden";
@@ -91,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
       <div><!-- info -->
         <?php
-          if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $birthdateErr == "" AND $passwordErr =="") {
+          if($_SERVER["REQUEST_METHOD"] == "POST" AND $nameErr =="" AND $emailErr == "" AND $birthdateErr == "" AND $passwordErr =="") {
         ?>
           <div>
             <h4 >Info!</h4>
@@ -101,11 +101,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
             }	
         ?>
-        <?php if($nomeErr !="" OR $emailErr != "" OR $birthdateErr !=""OR $passwordErr !="") { ?>
+        <?php if($nameErr !="" OR $emailErr != "" OR $birthdateErr !=""OR $passwordErr !="") { ?>
           <div>
               <h4>Alert!</h4>
               <hr>
-              <p><?PHP echo $nomeErr ?></p>
+              <p><?PHP echo $nameErr ?></p>
               <p><?PHP echo $emailErr ?></p>
               <p><?PHP echo $birthdateErr ?></p>
               <p><?PHP echo $passwordErr ?></p>
@@ -116,8 +116,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       <div>
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="input-item">
-                <label for="name">Name: </label><br>
-                <input type="text" id="name" name="name" value="<?php echo $nome;?>" placeholder="Name" <?php echo $disabled ?>>
+                <label for="name">name: </label><br>
+                <input type="text" id="name" name="name" value="<?php echo $name;?>" placeholder="name" <?php echo $disabled ?>>
             </div>
             <br>
             <div class="input-item">
@@ -163,6 +163,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 // close connection
 mysqli_close ($conn);
 } else {
-  header ('Location: login.php');
+  header ('Location: registration.php');
 } 
 ?>

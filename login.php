@@ -5,8 +5,8 @@ ini_set('default_charset', 'UTF-8');
 
 include ("databaseConnect.php");
 
-$nomeErr = $emailErr = $passwordErr= "";
-$nome = $email = $password = $hidden = $disabled = "";
+$nameErr = $emailErr = $passwordErr= "";
+$name = $email = $password = $hidden = $disabled = "";
 
 
 function test_input($dados) {
@@ -33,9 +33,9 @@ if( !empty( $_SESSION['login'] )){
     }
 
     if (empty($_POST["password"])) {
-      $nomeErr = "Password is required!";
+      $nameErr = "Password is required!";
     } else {
-      $nome = test_input($_POST["password"]);
+      $name = test_input($_POST["password"]);
     }
     
     if ($passwordErr =="" AND $emailErr == ""){
@@ -43,7 +43,7 @@ if( !empty( $_SESSION['login'] )){
       $result = mysqli_query ($conn,$query);
       $row = mysqli_fetch_assoc ($result);
       if (mysqli_num_rows($result) > 0){
-        $_SESSION['nome'] = $row['nome'];
+        $_SESSION['name'] = $row['name'];
         $_SESSION['login'] = TRUE;
         header ('Location: index.php');
       } else {

@@ -1,0 +1,35 @@
+Registration Page: 
+minimalist page to user self-register with Name, Email, Birthdate, and Password (and password repeat). OK
+Member numbers must be generated automatically (set of four numbers). //Como gera aleatoriamente? 
+
+
+Authentication(LOGIN) Page: 
+Email and Password OK
+(user member must be redirected to his profile; the manager must be redirected to the user's list page).//Como redirecionar separadamente? 
+
+
+Profile page: // UPDATE
+Name of the user, Email, Member Number, and Birthdate. On the profile, the user can change his data and password.
+
+
+List page (only manager can view): 
+List users’ data (Member Number, Name, Email, Birthdate). // TODOS OS USERS
+
+
+Edit page: 
+like the profile page, but to be edited by the manager.
+
+
+Delete page (not visible): OK
+only the manager can run this page. After user deletion must redirect to the List page.// falta redirecionar para a listpage
+
+
+Create user page (only accessible by the manager): 
+Name of the user, Email, Member number (generated automatically), Birthdate, and Password.
+
+
+Only the Registration Page and Authentication Page are public. The others are only available after authentication.
+Users must not have access to the manager pages.
+
+
+To the style of the pages, Bootstrap Framework must be adopted. An additional CSS file must be adopted for exceptions and Bootstrap classes override.

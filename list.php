@@ -8,10 +8,10 @@ ini_set('default_charset', 'UTF-8');
 if( $_SESSION['login'] == TRUE){
 
 // database connection
-include ("db_connect.php");
+include ("databaseConnect.php");
 
 if(isset ($_POST['pesquisa'])) {
-	$query = "SELECT * FROM contatos WHERE nome LIKE '%$_POST[pesquisa]%' OR email LIKE '%$_POST[pesquisa]%'";
+	$query = "SELECT * FROM contatos WHERE name LIKE '%$_POST[pesquisa]%' OR email LIKE '%$_POST[pesquisa]%'";
 	$result = mysqli_query ($conn, $query);	
 } else {
 	$query = "SELECT * FROM contatos";
@@ -52,7 +52,7 @@ if(isset ($_POST['pesquisa'])) {
             <?php while ($row = mysqli_fetch_assoc ($result)) { ?>
             <tr>
               <td><?PHP echo $row ["codigo"]?></td>
-              <td><?PHP echo $row ["nome"]?></td>
+              <td><?PHP echo $row ["name"]?></td>
               <td><?PHP echo $row ["email"]?></td>
               <td><?PHP echo $row ["birthdate"]?></td>
               <td><a href="update.php?codigo=<?PHP echo $row ["codigo"]?>">UPDATE</a></td>
@@ -72,6 +72,6 @@ if(isset ($_POST['pesquisa'])) {
 mysqli_close ($conn);
 
 } else {
-  header ('Location: login.php');
+  header ('Location: list.php');
 } 
 ?>

@@ -11,8 +11,8 @@ if( $_SESSION['login'] == TRUE){
 include ("databaseConnect.php");
 
 // intialize variables
-$nomeErr = $emailErr = "";
-$nome = $email = "";
+$nameErr = $emailErr = "";
+$name = $email = "";
 
 switch ($_SERVER["REQUEST_METHOD"]){
 	case 'POST':
@@ -33,13 +33,12 @@ function test_input($dados) {
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-	if (empty($_POST["nome"])) {
-		$nomeErr = "<strong>Do not remove the Name.</strong> Please insert a valid Name!";
+	if (empty($_POST["name"])) {
+		$nameErr = "<strong>Do not remove the Name.</strong> Please insert a valid Name!";
 	} else {
-		$nome = test_input($_POST["nome"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^([^[:punct:]\d]+)$/",$nome)) {
-		  $nomeErr = "Only letters and white space allowed!";
+		$name = test_input($_POST["name"]);
+    if (!preg_match("/^([^[:punct:]\d]+)$/",$name)) {
+		  $nameErr = "Only letters and white space allowed!";
 		}
 	}
 	  
@@ -47,14 +46,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		$emailErr = "<strong>Do not remove Email.</strong> Please insert a valid Email!";
 	} else {
     $email = test_input($_POST["email"]);
-    // verifica o formato do email
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format!";
 		}
 	}
 
-	if ($nomeErr =="" AND $emailErr == ""){
-		$query = "UPDATE contatos SET nome = '$nome', email = '$email' WHERE codigo = $codigo";
+	if ($nameErr =="" AND $emailErr == ""){
+		$query = "UPDATE contatos SET name = '$name', email = '$email' WHERE codigo = $codigo";
 		$result = mysqli_query ($conn, $query);	
 	}
 
@@ -93,7 +92,7 @@ $row = mysqli_fetch_assoc ($result);
 
     <div><!-- info -->
 		<?php
-		  	if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "") {
+		  	if($_SERVER["REQUEST_METHOD"] == "POST" AND $nameErr =="" AND $emailErr == "") {
 		?>
           <div >
             <h4>Info!</h4>
@@ -103,11 +102,11 @@ $row = mysqli_fetch_assoc ($result);
         <?php
             }	
         ?>
-		<?php if($nomeErr !="" OR $emailErr != "") { ?>
+		<?php if($nameErr !="" OR $emailErr != "") { ?>
             <div">
 			<h4>Alert!</h4>
               <hr>
-              <p><?PHP echo $nomeErr ?></p>
+              <p><?PHP echo $nameErr ?></p>
               <p><?PHP echo $emailErr ?></p> 
             </div>
         <?php }	?>
@@ -116,9 +115,9 @@ $row = mysqli_fetch_assoc ($result);
     <div><!-- contentor do formulario --> 
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div>
-              <label for="nome">Name </label>
+              <label for="name">Name </label>
               <div>
-                <input name="nome" type="text" value="<?php echo $row['nome'];?>" placeholder="Name"/>
+                <input name="name" type="text" value="<?php echo $row['name'];?>" placeholder="Name"/>
               </div>
             </div>
             <div>
@@ -147,6 +146,6 @@ $row = mysqli_fetch_assoc ($result);
 mysqli_close ($conn);
 
 } else {
-  header ('Location: login.php');
+  header ('Location: profile.php');
 } 
 ?>
