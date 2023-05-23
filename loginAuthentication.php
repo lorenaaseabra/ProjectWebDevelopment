@@ -96,15 +96,15 @@ if( !empty( $_SESSION['login'] )){
             <h2>Login</h2>
         </div>
         <div>
-            <form>
+            <form name="frmLogin" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                 <div class="input-item">
                     <label for="email">Email: </label><br>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" value="<?php echo $email; ?>" required autofocus>
                 </div>
                 <br>
                 <div class="input-item">
                     <label for="password">Password: </label><br>
-                    <input type="password" id="password" name="password">
+                    <input type="password" id="password" name="password" required>
                 </div>
                 <br>
                 <div>
