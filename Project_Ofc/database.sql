@@ -20,7 +20,7 @@ CREATE TABLE `usuarios` (
   `member-number` int(11) NOT NULL,
   `nome` varchar(40) CHARACTER SET latin1 DEFAULT NULL,
   `email` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `password` varchar(255) CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
