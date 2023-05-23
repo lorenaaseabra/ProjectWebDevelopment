@@ -59,7 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 }
 
-$query = "SELECT * FROM contatos WHERE memberNumber=$memberNumber";
+$query = "SELECT * FROM contatos WHERE email=$email";
 $result = mysqli_query ($conn, $query);
 $row = mysqli_fetch_assoc ($result);
 

@@ -17,7 +17,7 @@ function test_input($dados) {
   }
 
 if( !empty( $_SESSION['login'] )){
-    header ('Location: profile.php');
+    header ('Location: loginAuthentication.php');
 } else {
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
