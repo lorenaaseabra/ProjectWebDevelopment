@@ -49,7 +49,7 @@ if(!empty( $_SESSION['login'])){
       if (mysqli_num_rows($result) > 0){
         $_SESSION['nome'] = $row['nome'];
         $_SESSION['login'] = TRUE;
-        header ('Location: profile.php');
+        header ('Location: loginAuthentication.php');
       } else {
         $autErr ="Please verify you authentication data!";
       }
