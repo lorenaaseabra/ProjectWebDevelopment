@@ -1,15 +1,11 @@
-table,
-tr,
-td {
-    border: 1px solid white;
-    border-radius: 1%;
-    text-align: left;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    padding: 6px;
+table {
+    width: 70%;
+    color: white;
 }
 
-table {
-    width: 70px;
+td {
+    color: white;
+    width: 10%;
 }
 
 .forms {
@@ -20,6 +16,7 @@ table {
 nav {
     background-color: white;
     color: blue;
+    background: rgba(255, 255, 255, .7)
 }
 
 ul a {
@@ -34,5 +31,5 @@ ul a {
 
 ul a:hover {
     transform: scale(1.1);
-    opacity: 0.5;
+    color: rgb(0, 0, 137);
 }

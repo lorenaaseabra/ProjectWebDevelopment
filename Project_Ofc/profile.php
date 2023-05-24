@@ -5,7 +5,15 @@ session_start();
 // PHP charset
 ini_set('default_charset', 'UTF-8');
 
-if( $_SESSION['login'] == TRUE){
+if($_SESSION['login'] == TRUE){
+
+include ("databaseConnection.php");
+
+$nome = $_SESSION['nome'];
+
+$query = "SELECT * FROM contatos WHERE nome = '$nome'";
+$result = mysqli_query($conn, $query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +30,6 @@ if( $_SESSION['login'] == TRUE){
 
   <body>
   <header>
-      <!-- navigation bar -->
       <nav>
         <div>
         <ul>
@@ -32,7 +39,6 @@ if( $_SESSION['login'] == TRUE){
               <a href="closeSession.php">End session</a>
           </ul>
 
-          <!-- search form -->
           <form name="frmPesquisa" method="post" action="read.php">
             <input type="text" placeholder="Search" aria-label="Search" name="pesquisa">
             <button type="submit">Search</button>
@@ -40,11 +46,16 @@ if( $_SESSION['login'] == TRUE){
 
         </div>
       </nav>
-      <!-- /.navigation bar -->
     </header>
 
     <main>     
-
+      <h1>Profile</h1>
+    <?php while ($row = mysqli_fetch_assoc ($result)) { ?>
+      <p><b>Name: </b><?PHP echo $row ["nome"]?></p>
+      <p><b>Email: </b><?PHP echo $row ["email"]?></p>
+      <p><b>Member number: </b><?PHP echo $row ["memberNumber"]?></p>
+      <p><b>Password: </b><?PHP echo $row ["password"]?></p>
+    <?php } ?>
     </main>
 
 </body>
