@@ -50,7 +50,6 @@ $result = mysqli_query($conn, $query);
     </header>
 
     <main>     
-      <h1>Profile</h1>
     <?php while ($row = mysqli_fetch_assoc ($result)) { ?>
       <p><b>Name: </b><?PHP echo $row ["nome"]?></p>
       <p><b>Email: </b><?PHP echo $row ["email"]?></p>
