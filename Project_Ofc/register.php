@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       }
 
 	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == ""){
-		$query = "INSERT INTO contatos (nome, email, password)
+		$query = "INSERT INTO contatos (nome, email, password, memberNumber)
 		VALUES ('$nome',  '$email', '$password', '$memberNumber')";
     mysqli_query ($conn,$query);
     $disabled = "disabled";
