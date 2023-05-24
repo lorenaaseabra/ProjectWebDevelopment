@@ -85,7 +85,7 @@ $row = mysqli_fetch_assoc ($result);
       <nav>
         <div>
         <ul>
-              <a href="profilw.php">Home</a>
+              <a href="profile.php">Home</a>
               <a href="read.php">List data</a>
               <a href="register.php">Create new</a>
               <a href="closeSession.php">End session</a>
