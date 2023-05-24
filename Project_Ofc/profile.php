@@ -22,10 +22,11 @@ $result = mysqli_query($conn, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- insert here the reference to stylesheet file -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="read.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
-    <title>Profile</title>
+
+    <title>User Profile</title>
   </head>
 
   <body>
@@ -33,7 +34,7 @@ $result = mysqli_query($conn, $query);
       <nav>
         <div>
         <ul>
-              <a href="profile.php">Home</a>
+              <a href="profile.php">Profile</a>
               <a href="read.php">List data</a>
               <a href="register.php">Create new</a>
               <a href="closeSession.php">End session</a>
@@ -56,8 +57,9 @@ $result = mysqli_query($conn, $query);
       <p><b>Member number: </b><?PHP echo $row ["memberNumber"]?></p>
       <p><b>Password: </b><?PHP echo $row ["password"]?></p>
     <?php } ?>
+    <a href="update.php">Alter data</a>
     </main>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
 <?php 
