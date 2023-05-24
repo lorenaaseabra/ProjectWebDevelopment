@@ -14,13 +14,16 @@ include ("databaseConnection.php");
 $nomeErr = $emailErr = $passwordErr= "";
 $nome = $email = $password = $hidden = $disabled = "";
 
+$memberNumber = mt_rand(1000, 9999);
+
+
 // "cleaning data"
 function test_input($dados) {
 	$dados = trim($dados);
 	$dados = stripslashes($dados);
 	$dados = htmlspecialchars($dados);
 	return $dados;
-  }
+}
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -55,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == ""){
 		$query = "INSERT INTO contatos (nome, email, password)
-		VALUES ('$nome',  '$email', '$password')";
+		VALUES ('$nome',  '$email', '$password', '$memberNumber')";
     mysqli_query ($conn,$query);
     $disabled = "disabled";
     $hidden = "hidden";
@@ -172,11 +175,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
       </div><!-- /.container -->
 
-      <!-- footer -->
-      <footer>
-        <p>&copy; 2021 Jos&eacute; Monteiro</p>
-      </footer>
-      <!-- /.footer -->
     </main>
   </body>
 </html>
