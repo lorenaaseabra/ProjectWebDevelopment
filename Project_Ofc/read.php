@@ -27,29 +27,21 @@ if(isset ($_POST['pesquisa'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- insert here the reference to stylesheet file -->
-    <link href="" rel="stylesheet">
-    <title>EXEMPLE TO MANAGE DATABASE WITH PHP</title>
+    <link href="read.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>List</title>
   </head>
 
   <body>
   <header>
       <!-- navigation bar -->
       <nav>
-        <a href="#">CRUD</a>
         <div>
-          <ul>
-            <li>
-              <a href="profile.php">Home</a>
-            </li>
-            <li>
+        <ul>
+              <a href="profilw.php">Home</a>
               <a href="read.php">List data</a>
-            </li>
-            <li >
               <a href="register.php">Create new</a>
-            </li>
-            <li>
               <a href="closeSession.php">End session</a>
-            </li>
           </ul>
 
           <!-- search form -->
@@ -63,9 +55,6 @@ if(isset ($_POST['pesquisa'])) {
       <!-- /.navigation bar -->
     </header>
     <main>
-      <div> <!-- title -->
-            <legend>C<strong>Read</strong>UD</legend>
-        </div>
 
         <div> <!-- info -->
             <p><?PHP echo mysqli_num_rows ($result)?> register(s) found.</p>
@@ -74,7 +63,7 @@ if(isset ($_POST['pesquisa'])) {
         <div> <!-- list -->
   			<table>
 				<tr>
-					<td width="80"><strong>memberNumber</strong></td>
+					<td width="80"><strong>MEMBERNUMBER</strong></td>
 					<td><strong>NAME</strong></td>
 					<td><strong>EMAIL</strong></td>
 					<td width="80"><strong>UPDATE</strong></td>

@@ -1,6 +1,6 @@
 Registration Page: 
 minimalist page to user self-register with Name, Email, Birthdate, and Password (and password repeat). OK
-Member numbers must be generated automatically (set of four numbers). //Como gera aleatoriamente? 
+Member numbers must be generated automatically (set of four numbers).OK
 
 
 Authentication(LOGIN) Page: 
@@ -13,7 +13,7 @@ Name of the user, Email, Member Number, and Birthdate. On the profile, the user 
 
 
 List page (only manager can view): 
-List users’ data (Member Number, Name, Email, Birthdate). // TODOS OS USERS
+List users’ data (Member Number, Name, Email, Birthdate). OK
 
 
 Edit page: 

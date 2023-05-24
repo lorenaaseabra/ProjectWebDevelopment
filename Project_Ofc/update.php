@@ -74,45 +74,34 @@ $row = mysqli_fetch_assoc ($result);
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- insert here the reference to stylesheet file -->
-    <link href="" rel="stylesheet">
-    <title>EXEMPLE TO MANAGE DATABASE WITH PHP</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="read.css" rel="stylesheet">
+    <title>UPDATE</title>
   </head>
 
   <body>
   <header>
       <!-- navigation bar -->
       <nav>
-        <a href="#">CRUD</a>
         <div>
-          <ul>
-            <li>
-              <a href="index.php">Home</a>
-            </li>
-            <li>
+        <ul>
+              <a href="profilw.php">Home</a>
               <a href="read.php">List data</a>
-            </li>
-            <li >
               <a href="register.php">Create new</a>
-            </li>
-            <li>
               <a href="closeSession.php">End session</a>
-            </li>
           </ul>
-
-          <!-- search form -->
           <form name="frmPesquisa" method="post" action="read.php">
             <input type="text" placeholder="Search" aria-label="Search" name="pesquisa">
             <button type="submit">Search</button>
           </form>
+
+          <!-- search form -->
 
         </div>
       </nav>
       <!-- /.navigation bar -->
     </header>
     <main>
-      <div> <!-- title -->  
-        <legend>CR<strong>Update</strong>D</legend>
-    </div>
 
     <div><!-- info -->
 		<?php

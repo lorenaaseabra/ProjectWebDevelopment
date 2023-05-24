@@ -1,0 +1,38 @@
+table,
+tr,
+td {
+    border: 1px solid white;
+    border-radius: 1%;
+    text-align: left;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 6px;
+}
+
+table {
+    width: 70px;
+}
+
+.forms {
+    padding-left: 1150px;
+    display: inline-block;
+}
+
+nav {
+    background-color: white;
+    color: blue;
+}
+
+ul a {
+    color: blue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    font-size: x-large;
+    line-height: 2.5;
+    margin: 0 20px;
+}
+
+ul a:hover {
+    transform: scale(1.1);
+    opacity: 0.5;
+}
