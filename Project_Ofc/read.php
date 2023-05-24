@@ -1,19 +1,16 @@
 <?php
-//initialize session
 session_start();
 
-// PHP charset
 ini_set('default_charset', 'UTF-8');
 
 if( $_SESSION['login'] == TRUE){
 
-// database connection
 include ("databaseConnection.php");
 
 if(isset ($_POST['pesquisa'])) {
 	$query = "SELECT * FROM contatos WHERE nome LIKE '%$_POST[pesquisa]%' OR email LIKE '%$_POST[pesquisa]%'";
 	$result = mysqli_query ($conn, $query);	
-} else {
+}else{
 	$query = "SELECT * FROM contatos";
 	$result = mysqli_query($conn, $query);
 }
@@ -32,10 +29,10 @@ if(isset ($_POST['pesquisa'])) {
   </head>
 
   <body>
-  <header>
+    <header>
       <nav>
         <div>
-        <ul>
+          <ul>
               <a href="profile.php">Profile</a>
               <a href="read.php">List data</a>
               <a href="createNew.php">Create new</a>
@@ -57,24 +54,24 @@ if(isset ($_POST['pesquisa'])) {
         </div>
 
         <div>
-  			<table class="table">
-				<tr>
-					<td width="80" scope="col"><strong>Member Number</strong></td>
-					<td scope="col"><strong>Name</strong></td>
-					<td scope="col"><strong>Email</strong></td>
-					<td scope="col" width="80"><strong>Update</strong></td>
-					<td scope="col" width="80"><strong>Delete</strong></td>
-				</tr>
-				<?php while ($row = mysqli_fetch_assoc ($result)) { ?>
-				<tr>
-				<td scope="row"><?PHP echo $row ["memberNumber"]?></td>
-				<td scope="row"><?PHP echo $row ["nome"]?></td>
-				<td scope="row"><?PHP echo $row ["email"]?></td>
-				<td scope="row"><a href="update.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">Update</a></td>
-				<td scope="row"><a href="delete.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">Delete</a></td>
-				</tr>
-				<?php } ?>
-			</table>
+          <table class="table">
+            <tr>
+              <td width="80" scope="col"><strong>Member Number</strong></td>
+              <td scope="col"><strong>Name</strong></td>
+              <td scope="col"><strong>Email</strong></td>
+              <td scope="col" width="80"><strong>Update</strong></td>
+              <td scope="col" width="80"><strong>Delete</strong></td>
+            </tr>
+            <?php while ($row = mysqli_fetch_assoc ($result)) { ?>
+            <tr>
+              <td scope="row"><?PHP echo $row ["memberNumber"]?></td>
+              <td scope="row"><?PHP echo $row ["nome"]?></td>
+              <td scope="row"><?PHP echo $row ["email"]?></td>
+              <td scope="row"><a href="update.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">Update</a></td>
+              <td scope="row"><a href="delete.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">Delete</a></td>
+            </tr>
+            <?php } ?>
+        </table>
 
       </div>
       </div>

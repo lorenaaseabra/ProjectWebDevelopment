@@ -1,21 +1,15 @@
 <?php
-//initialize session
 session_start();
 
-// PHP charset
 ini_set('default_charset', 'UTF-8');
 
-
-// database connection
 include ("databaseConnection.php");
 
-// intialize variables
 $nomeErr = $emailErr = $passwordErr = $memberNumberErr = "";
 $nome = $email = $password = $hidden = $disabled = "";
 
 $memberNumber = mt_rand(1000, 9999);
 
-// "cleaning data"
 function test_input($dados) {
 	$dados = trim($dados);
 	$dados = stripslashes($dados);
@@ -27,39 +21,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if (empty($_POST["nome"])) {
 		$nomeErr = "Name is required!";
-	  } else {
-      $nome = test_input($_POST["nome"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^([^[:punct:]\d]+)$/",$nome)) {
-        $nomeErr = "Only letters and white space allowed.";
-      }
-	  }
+	}else{
+        $nome = test_input($_POST["nome"]);
+        if (!preg_match("/^([^[:punct:]\d]+)$/",$nome)) {
+            $nomeErr = "Only letters and white space allowed.";
+        }
+	}
 	  
-	  if (empty($_POST["email"])) {
+	if (empty($_POST["email"])) {
 		$emailErr = "Email is required!";
-	  } else {
-      $email = test_input($_POST["email"]);
-      // verifica o formato do email
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Invalid email format!";
-      }
+	}else{
+        $email = test_input($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $emailErr = "Invalid email format!";
+        }
     }
-
     
     if (strlen($_POST["password"]) < 5) {    
       $passwordErr = "Password must have min. 5 characters!";
-    } elseif ($_POST["password"] != $_POST["rpassword"]){
+    }elseif($_POST["password"] != $_POST["rpassword"]){
         $passwordErr = "Passwords does not match!";
-    } else { 
+    }else{ 
         $password = test_input($_POST["password"]);
     }
 
 	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == "" AND $memberNumberErr == ""){
 		$query = "INSERT INTO contatos (memberNumber, nome, email, password)
 		VALUES ('$memberNumber', '$nome',  '$email', '$password')";
-    mysqli_query ($conn,$query);
-    $disabled = "disabled";
-    $hidden = "hidden";
+        mysqli_query ($conn,$query);
+        $disabled = "disabled";
+        $hidden = "hidden";
 	}
 }
 
@@ -82,11 +73,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <main>
       <div>
         <?php
-          if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $passwordErr =="") {
+            if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $passwordErr =="") {
         ?>
-          <div>
+        <div>
             <h4>Your registration was successful!</h4>
-          </div>
+        </div>
         <?php
             }	
         ?>
@@ -101,23 +92,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
 
       <header>
-      <nav>
-        <div>
-        <ul>
-              <a href="profile.php">Profile</a>
-              <a href="read.php">List data</a>
-              <a href="createNew.php">Create new</a>
-              <a href="closeSession.php">End session</a>
-          </ul>
+        <nav>
+            <div>
+                <ul>
+                    <a href="profile.php">Profile</a>
+                    <a href="read.php">List data</a>
+                    <a href="createNew.php">Create new</a>
+                    <a href="closeSession.php">End session</a>
+                </ul>
 
-          <form name="frmPesquisa" method="post" action="read.php">
-            <input type="text" placeholder="Search" aria-label="Search" name="pesquisa">
-            <button type="submit">Search</button>
-          </form>
-
-        </div>
-      </nav>
-    </header>
+                <form name="frmPesquisa" method="post" action="read.php">
+                    <input type="text" placeholder="Search" aria-label="Search" name="pesquisa">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+      </header>
 
       <div class="container">
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
@@ -149,7 +139,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <div>	
               <button class="btn btn-primary" name="gravar" type="submit" <?php echo $disabled ?>>Save</button>
               <button class="btn btn-primary" name="limpar" type="reset" >Reset</button>
-              <p>Already have an account? <a href="loginAuthentication.php">Login</a></p>
             </div>
 
         </form>

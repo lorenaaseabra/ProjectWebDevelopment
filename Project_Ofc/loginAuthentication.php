@@ -1,36 +1,28 @@
 <?php
-//initialize session
 session_start();
 
-// PHP charset
 ini_set('default_charset', 'UTF-8');
 
-// database connection
 include ("databaseConnection.php");
 
-// intialize variables
 $nomeErr = $emailErr = $passwordErr= ""; //ADICIONAR BIRTH DATE!!!!
 $nome = $email = $password = $hidden = $disabled = "";
 
-// "cleaning data"
 function test_input($dados) {
 	$dados = trim($dados);
 	$dados = stripslashes($dados);
 	$dados = htmlspecialchars($dados);
 	return $dados;
-  }
+}
 
 if(!empty( $_SESSION['login'])){
     header ('Location: profile.php');
-} else {
-
+}else{
   if($_SERVER["REQUEST_METHOD"] == "POST") {
-    
     if (empty($_POST["email"])) {
       $emailErr = "Email is required!";
-    } else {
+    }else{
       $email = test_input($_POST["email"]);
-      // check if e-mail address is well-formed
       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $emailErr = "Invalid email format";
       }
@@ -38,7 +30,7 @@ if(!empty( $_SESSION['login'])){
 
     if (empty($_POST["password"])) {
       $nomeErr = "Password is required!";
-    } else {
+    }else{
       $nome = test_input($_POST["password"]);
     }
     
@@ -50,10 +42,9 @@ if(!empty( $_SESSION['login'])){
         $_SESSION['nome'] = $row['nome'];
         $_SESSION['login'] = TRUE;
         header ('Location: profile.php');
-      } else {
+      }else{
         $autErr ="Please verify you authentication data!";
       }
-  
     }
   }
 }
@@ -89,24 +80,26 @@ if(!empty( $_SESSION['login'])){
       </div>
       <?php } ?>
       <div class="container">
-        <form name="frmLogin" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">          
-            <h1>Login</h1>
-            <div class="mb-3">
-              <label class="form-label">Email: </label>
-              <input type="email" class="form-control" name="email"  placeholder="Email" value="<?php echo $email; ?>" required autofocus>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Password: </label>
-              <input type="password" class="form-control" name="password" placeholder="Password" required>
-            </div>
-            <div class="mb-3">
-              <button type="submit" class="btn btn-primary">Login</button>
-            </div>
-            <p>Don't have an account? <a href="register.php">Register</a></p>
-        </form>
+          <form name="frmLogin" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">          
+              <h1>Login</h1>
+              <div class="mb-3">
+                <label class="form-label">Email: </label>
+                <input type="email" class="form-control" name="email"  placeholder="Email" value="<?php echo $email; ?>" required autofocus>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Password: </label>
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
+              </div>
+
+              <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+
+              <p>Don't have an account? <a href="register.php">Register</a></p>
+          </form>
         </div>
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
 </html>
