@@ -1,0 +1,10 @@
+body {
+  margin-left: 10px;
+  background: rgb(0,57,159);
+  background: linear-gradient(90deg, rgba(0,57,159,1) 35%, rgba(0,102,200,1) 100%);
+  color: white;
+}
+
+.form-control {
+  width: 30%;
+}
