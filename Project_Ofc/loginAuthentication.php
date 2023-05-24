@@ -68,42 +68,28 @@ if(!empty( $_SESSION['login'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap413/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="bootstrap413/css/signin.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
+      body {
+        margin-left: 10px;
+        background: rgb(9,9,121);
+        background: linear-gradient(90deg, rgba(9,9,121,1) 35%, rgba(0,174,209,1) 100%);
+        color: white;
       }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      .form-signin {
-        width: 100%;
-        max-width: 400px;
-        padding: 15px;
-        margin: auto;
+      .form-control {
+        width: 30%;
       }
       
     </style>
-    <title>EXEMPLE TO MANAGE DATABASE WITH PHP</title> 
+    <title>Login</title> 
   </head>
 
   <body>
     <main>
 
-      <!-- info -->
+      
       <?php
         if($_SERVER["REQUEST_METHOD"] == "POST" AND ($passwordErr !="" OR $emailErr != "" OR $autErr !="")) {
       ?>
@@ -116,18 +102,26 @@ if(!empty( $_SESSION['login'])){
           echo $passwordErr;
         ?>
       </div>
-      <?php } ?><!-- /.info -->
+      <?php } ?>
 
       <form name="frmLogin" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">          
           <h1>Login</h1>
-          <input type="email" name="email"  placeholder="Email" value="<?php echo $email; ?>" required autofocus>
+          <div class="mb-3">
+            <label class="form-label">Email: </label>
+            <input type="email" class="form-control" name="email"  placeholder="Email" value="<?php echo $email; ?>" required autofocus>
           </div>
-          <input type="password" name="password" placeholder="Password" required>
-          <button type="submit">Login</button>
+          <div class="mb-3">
+            <label class="form-label">Password: </label>
+            <input type="password" class="form-control" name="password" placeholder="Password" required>
+          </div>
+          <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+          <p>Don't have an account? <a href="register.php">Register</a></p>
       </form>
-      <p>Don't have an account? <a href="register.php">Register</a></p>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
 </html>
 
