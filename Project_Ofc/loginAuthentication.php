@@ -123,8 +123,9 @@ if(!empty( $_SESSION['login'])){
           <input type="email" name="email"  placeholder="Email" value="<?php echo $email; ?>" required autofocus>
           </div>
           <input type="password" name="password" placeholder="Password" required>
-          <button type="submit">Submit</button>
+          <button type="submit">Login</button>
       </form>
+      <p>Don't have an account? <a href="register.php">Register</a></p>
     </main>
 
   </body>

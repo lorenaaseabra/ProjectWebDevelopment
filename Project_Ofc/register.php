@@ -5,7 +5,6 @@ session_start();
 // PHP charset
 ini_set('default_charset', 'UTF-8');
 
-if( $_SESSION['login'] == TRUE){
 
 // database connection
 include ("databaseConnection.php");
@@ -181,7 +180,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 // close connection
 mysqli_close ($conn);
-} else {
-  header ('Location: loginAuthentication.php');
-} 
 ?>
