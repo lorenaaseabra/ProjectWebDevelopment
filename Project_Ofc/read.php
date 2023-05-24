@@ -40,7 +40,7 @@ if(isset ($_POST['pesquisa'])) {
         <ul>
               <a href="profile.php">Profile</a>
               <a href="read.php">List data</a>
-              <a href="register.php">Create new</a>
+              <a href="createNew.php">Create new</a>
               <a href="closeSession.php">End session</a>
           </ul>
 
