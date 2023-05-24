@@ -80,8 +80,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <body>
     <main>
-
-
       <div>
         <?php
           if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $passwordErr =="") {
@@ -121,7 +119,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       </nav>
     </header>
 
-      <div> 
+      <div class="container">
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="mb-3">
               <label class="form-label">Name: </label>

@@ -33,23 +33,22 @@ $result = mysqli_query($conn, $query);
   <header>
       <nav>
         <div>
-        <ul>
+          <ul>
               <a href="profile.php">Profile</a>
               <a href="read.php">List data</a>
               <a href="createNew.php">Create new</a>
               <a href="closeSession.php">End session</a>
           </ul>
-
           <form name="frmPesquisa" method="post" action="read.php">
             <input type="text" placeholder="Search" aria-label="Search" name="pesquisa">
             <button type="submit">Search</button>
           </form>
-
         </div>
       </nav>
     </header>
 
-    <main>     
+    <main> 
+    <div>    
     <?php while ($row = mysqli_fetch_assoc ($result)) { ?>
       <p><b>Name: </b><?PHP echo $row ["nome"]?></p>
       <p><b>Email: </b><?PHP echo $row ["email"]?></p>
@@ -57,6 +56,7 @@ $result = mysqli_query($conn, $query);
       <p><b>Password: </b><?PHP echo $row ["password"]?></p>
     <?php } ?>
     <a href="update.php">Alter data</a>
+    </div>
     </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>

@@ -80,9 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <body>
     <main>
-      <div> <!-- title -->
-        <h1>Register</h1>
-      </div>
+      
 
       <div>
         <?php
@@ -104,8 +102,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php }	?>
       </div>
 
-      <div> 
+      <div class="container">
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+          <h1>Register</h1>
             <div class="mb-3">
               <label class="form-label">Name: </label>
               <input name="nome" type="text" class="form-control" value="<?php echo $nome;?>" placeholder="Name" <?php echo $disabled ?>>

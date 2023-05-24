@@ -7,10 +7,6 @@ body {
     color: white;
 }
 
-.form-control {
-    width: 30%;
-}
-
 button:hover {
     transform: scale(1.1);
     opacity: 0.5;
@@ -22,4 +18,15 @@ a {
 
 a:hover {
     color: rgb(138, 206, 255);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.form-control {
+    width: 300px;
 }

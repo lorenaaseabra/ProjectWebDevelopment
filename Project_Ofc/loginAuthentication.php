@@ -66,18 +66,15 @@ if(!empty( $_SESSION['login'])){
   <head>
     <meta http-equiv="content-type" content="text/html; charset=ISO8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
   
     <title>Login</title> 
   </head>
 
   <body>
     <main>
-
-      
       <?php
         if($_SERVER["REQUEST_METHOD"] == "POST" AND ($passwordErr !="" OR $emailErr != "" OR $autErr !="")) {
       ?>
@@ -91,22 +88,23 @@ if(!empty( $_SESSION['login'])){
         ?>
       </div>
       <?php } ?>
-
-      <form name="frmLogin" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">          
-          <h1>Login</h1>
-          <div class="mb-3">
-            <label class="form-label">Email: </label>
-            <input type="email" class="form-control" name="email"  placeholder="Email" value="<?php echo $email; ?>" required autofocus>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Password: </label>
-            <input type="password" class="form-control" name="password" placeholder="Password" required>
-          </div>
-          <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Login</button>
-          </div>
-          <p>Don't have an account? <a href="register.php">Register</a></p>
-      </form>
+      <div class="container">
+        <form name="frmLogin" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">          
+            <h1>Login</h1>
+            <div class="mb-3">
+              <label class="form-label">Email: </label>
+              <input type="email" class="form-control" name="email"  placeholder="Email" value="<?php echo $email; ?>" required autofocus>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password: </label>
+              <input type="password" class="form-control" name="password" placeholder="Password" required>
+            </div>
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            <p>Don't have an account? <a href="register.php">Register</a></p>
+        </form>
+        </div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

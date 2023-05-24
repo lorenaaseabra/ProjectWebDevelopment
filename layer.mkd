@@ -33,3 +33,5 @@ Users must not have access to the manager pages.
 
 
 To the style of the pages, Bootstrap Framework must be adopted. An additional CSS file must be adopted for exceptions and Bootstrap classes override.
+
+Ajustar os alertas, talvez javaScript

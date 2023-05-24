@@ -122,7 +122,7 @@ $row = mysqli_fetch_assoc ($result);
         <?php }	?>
     </div>
 
-    <div> 
+      <div>
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="mb-3">
               <label class="form-label" for="nome">Name </label>
