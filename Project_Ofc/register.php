@@ -10,11 +10,10 @@ ini_set('default_charset', 'UTF-8');
 include ("databaseConnection.php");
 
 // intialize variables
-$nomeErr = $emailErr = $passwordErr= "";
+$nomeErr = $emailErr = $passwordErr = $memberNumberErr = "";
 $nome = $email = $password = $hidden = $disabled = "";
 
 $memberNumber = mt_rand(1000, 9999);
-
 
 // "cleaning data"
 function test_input($dados) {
@@ -49,13 +48,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     
     if (strlen($_POST["password"]) < 5) {    
       $passwordErr = "Password must have min. 5 characters!";
-      } elseif ($_POST["password"] != $_POST["rpassword"]){
+    } elseif ($_POST["password"] != $_POST["rpassword"]){
         $passwordErr = "Passwords does not match!";
-        } else { 
-          $password = test_input($_POST["password"]);
-      }
+    } else { 
+        $password = test_input($_POST["password"]);
+    }
 
-	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == "" AND $memberNumber == ""){
+	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == "" AND $memberNumberErr == ""){
 		$query = "INSERT INTO contatos (memberNumber, nome, email, password)
 		VALUES ('$memberNumber', '$nome',  '$email', '$password')";
     mysqli_query ($conn,$query);
@@ -89,9 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
           if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $passwordErr =="") {
         ?>
           <div>
-            <h4 >Info!</h4>
-            <hr>
-            Data were sent to database.
+            <h4>Your registration was successful!</h4>
           </div>
         <?php
             }	
@@ -132,7 +129,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
               <label class="form-label">Birthdate: </label>
               <input name="birthdate" type="date" class="form-control"/>
             </div>
-
 
             <div>	
               <button class="btn btn-primary" name="gravar" type="submit" <?php echo $disabled ?>>Save</button>
