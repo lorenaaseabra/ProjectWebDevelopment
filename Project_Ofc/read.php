@@ -74,7 +74,7 @@ if(isset ($_POST['pesquisa'])) {
         <div> <!-- list -->
   			<table>
 				<tr>
-					<td width="80"><strong>ID</strong></td>
+					<td width="80"><strong>memberNumber</strong></td>
 					<td><strong>NAME</strong></td>
 					<td><strong>EMAIL</strong></td>
 					<td width="80"><strong>UPDATE</strong></td>
