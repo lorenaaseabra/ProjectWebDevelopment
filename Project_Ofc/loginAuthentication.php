@@ -58,8 +58,7 @@ if(!empty( $_SESSION['login'])){
     <meta http-equiv="content-type" content="text/html; charset=ISO8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="style2.css">
   
     <title>Login</title> 
   </head>
@@ -81,9 +80,13 @@ if(!empty( $_SESSION['login'])){
       <?php } ?>
       <div class="container">
           <form name="frmLogin" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">          
-              <h1>Login</h1>
+              <div class="loginmsg">
+                <h1>Welcome Back</h1>
+                <p>To login, please inform your data</p>
+
+              </div>
               <div class="mb-3">
-                <label class="form-label">Email: </label>
+                <label class="form-label" >Email: </label>
                 <input type="email" class="form-control" name="email"  placeholder="Email" value="<?php echo $email; ?>" required autofocus>
               </div>
 
@@ -93,10 +96,14 @@ if(!empty( $_SESSION['login'])){
               </div>
 
               <div class="mb-3">
-                <button type="submit" class="btn btn-primary">Login</button>
+                <button type="submit" class="btn btn-primary form-control">Login</button>
+              </div>
+              
+              
+              <div class="mb-3">
+                <p>Don't have an account? <a href="register.php">Register</a></p>
               </div>
 
-              <p>Don't have an account? <a href="register.php">Register</a></p>
           </form>
         </div>
     </main>

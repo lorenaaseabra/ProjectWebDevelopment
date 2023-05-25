@@ -1,0 +1,33 @@
+table {
+    width: 20%;
+    color: rgb(15, 15, 88);
+}
+
+td {
+    color: rgb(15, 15, 88);
+    width: 10%;
+}
+
+.forms {
+    padding-left: 1150px;
+    display: inline-block;
+}
+
+nav {
+    color: rgb(15, 15, 88);
+    background: linear-gradient(90deg, rgb(144, 174, 227) 35%, rgb(197, 224, 250) 100%);
+}
+
+ul a {
+    color: rgb(15, 15, 88);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    display: inline-block;
+    font-size: x-large;
+    line-height: 2.5;
+    margin: 0 20px;
+}
+
+ul a:hover {
+    color: rgb(24, 24, 130);
+}
