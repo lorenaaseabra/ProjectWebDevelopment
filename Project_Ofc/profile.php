@@ -50,8 +50,9 @@ $result = mysqli_query($conn, $query);
           <p><b>Email: </b><?PHP echo $row ["email"]?></p>
           <p><b>Member number: </b><?PHP echo $row ["memberNumber"]?></p>
           <p><b>Password: </b><?PHP echo $row ["password"]?></p>
+          <p><b>Birthdate: </b><?PHP echo $row ["birthdate"]?></p>
+          <a href="update.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">Update</a>
         <?php } ?>
-        <a href="update.php">Alter data</a>
       </div>
     </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>

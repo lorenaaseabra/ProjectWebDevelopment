@@ -7,8 +7,9 @@ if( $_SESSION['login'] == TRUE){
 
 include ("databaseConnection.php");
 
-$nomeErr = $emailErr = "";
-$nome = $email = "";
+$nomeErr = $emailErr = $birthdateErr = "";
+$nome = $email = $birthdate = "";
+$count = 0;
 
 switch ($_SERVER["REQUEST_METHOD"]){
 	case 'POST':
@@ -24,7 +25,7 @@ function test_input($dados) {
 	$dados = stripslashes($dados);
 	$dados = htmlspecialchars($dados);
 	return $dados;
-  }
+}
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -46,8 +47,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 	}
 
-	if ($nomeErr =="" AND $emailErr == ""){
-		$query = "UPDATE contatos SET nome = '$nome', email = '$email' WHERE memberNumber = $memberNumber";
+  if (empty($_POST["birthdate"])) {
+		$birthdateErr = "<strong>Do not remove Birthdate.</strong> Please insert a valid Birthdate!";
+	} else {
+    $birthdate = test_input($_POST["birthdate"]);
+	}
+
+	if ($nomeErr == "" AND $emailErr == "" AND $birthdateErr == ""){
+		$query = "UPDATE contatos SET nome = '$nome', email = '$email', birthdate = '$birthdate' WHERE memberNumber = $memberNumber";
 		$result = mysqli_query ($conn, $query);	
 	}
 
@@ -92,22 +99,21 @@ $row = mysqli_fetch_assoc ($result);
 
     <div>
       <?php
-          if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "") {
+          if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $birthdateErr == "") {
       ?>
       <div >
-        <h4>Info!</h4>
-        <hr>
-        Data were updated.
+        <h4>Data updated successfully</h4>
       </div>
       <?php
           }	
       ?>
-		  <?php if($nomeErr !="" OR $emailErr != "") { ?>
+		  <?php if($nomeErr !="" OR $emailErr != "" or $birthdateErr != "") { ?>
             <div">
 			        <h4>Alert!</h4>
               <hr>
               <p><?PHP echo $nomeErr ?></p>
               <p><?PHP echo $emailErr ?></p> 
+              <p><?PHP echo $birthdateErr ?></p>
             </div>
       <?php }	?>
     </div>
@@ -121,6 +127,11 @@ $row = mysqli_fetch_assoc ($result);
           <div class="mb-3">
             <label class="form-label" for="email">Email </label>
             <input name="email" type="email" class="form-control" value="<?php echo $row['email'];?>" placeholder="Email"/>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="birthdate">Birthdate </label>
+            <input name="birthdate" type="birthdate" class="form-control" value="<?php echo $row['birthdate'];?>" placeholder="Birthdate"/>
           </div>
 
           <div class="mb-3">
