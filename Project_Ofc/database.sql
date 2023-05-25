@@ -20,11 +20,12 @@ CREATE TABLE `contatos` (
   `memberNumber` int(11) NOT NULL,
   `nome` varchar(40) CHARACTER SET latin1 DEFAULT NULL,
   `email` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
-  `password` varchar(255) CHARACTER SET latin1 NOT NULL
+  `password` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `birthdate` DATE CHARACTER SET latin1 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `contatos` (`memberNumber`, `nome`, `email`, `password`) VALUES
+INSERT INTO `contatos` (`memberNumber`, `nome`, `email`, `password`, 'birthdate') VALUES
 (1040, 'Lore', 'lorenamseabra@gmail.com', '1234'),
 
 
@@ -35,3 +36,4 @@ ALTER TABLE `contatos`
 ALTER TABLE `contatos`
   MODIFY `memberNumber` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
+
