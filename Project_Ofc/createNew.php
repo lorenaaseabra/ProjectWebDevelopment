@@ -60,8 +60,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="style2.css">
     <link href="read2.css" rel="stylesheet">
@@ -70,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   </head>
 
   <body>
-    <main>
+    
       <div>
         <?php
             if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $passwordErr =="") {
@@ -104,6 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </nav>
       </header>
 
+<main>
       <div class="container">
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="mb-3">

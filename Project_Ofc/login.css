@@ -8,6 +8,10 @@ body {
     background: white;
     background: linear-gradient(90deg, rgb(154, 181, 228) 35%, rgb(251, 253, 255) 100%);
     color: rgb(15, 15, 88);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 nav ul {
@@ -20,18 +24,6 @@ nav ul a {
     color: #fff;
     text-decoration: none;
     margin-right: 10px;
-}
-
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.main-content p {
-    margin-bottom: 10px;
 }
 
 button.btn-primary {

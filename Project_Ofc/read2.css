@@ -8,6 +8,31 @@ td {
     width: 10%;
 }
 
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    color: rgb(15, 15, 88);
+    font-weight: bold;
+    padding: 10px;
+}
+
+.table td {
+    padding: 10px;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table a {
+    text-decoration: none;
+    color: #007bff;
+}
+
 .forms {
     padding-left: 1150px;
     display: inline-block;
