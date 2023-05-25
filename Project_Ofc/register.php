@@ -5,8 +5,8 @@ ini_set('default_charset', 'UTF-8');
 
 include ("databaseConnection.php");
 
-$nomeErr = $emailErr = $passwordErr = $memberNumberErr = "";
-$nome = $email = $password = $hidden = $disabled = "";
+$nomeErr = $emailErr = $passwordErr = $birthdateErr = $memberNumberErr = "";
+$nome = $email = $password = $birthdate = $hidden = $disabled = "";
 
 $memberNumber = mt_rand(1000, 9999);
 
@@ -27,6 +27,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $nomeErr = "Only letters and white space allowed.";
     }
 	}
+
+  if (empty($_POST["birthdate"])) {
+		$birthdateErr = "Birthdate is required!";
+	} else {
+    $birthdate = test_input($_POST["birthdate"]);
+	}
 	  
   if (empty($_POST["email"])) {
   $emailErr = "Email is required!";
@@ -36,7 +42,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $emailErr = "Invalid email format!";
     }
   }
-
     
   if (strlen($_POST["password"]) < 5) {    
       $passwordErr = "Password must have min. 5 characters!";
@@ -46,9 +51,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $password = test_input($_POST["password"]);
   }
 
-	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == "" AND $memberNumberErr == ""){
-		$query = "INSERT INTO contatos (memberNumber, nome, email, password)
-		VALUES ('$memberNumber', '$nome',  '$email', '$password')";
+	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == "" AND $memberNumberErr == "" AND $birthdateErr == ""){
+		$query = "INSERT INTO contatos (memberNumber, nome, email, password, birthdate)
+		VALUES ('$memberNumber', '$nome',  '$email', '$password', '$birthdate')";
     mysqli_query ($conn,$query);
     $disabled = "disabled";
     $hidden = "hidden";
@@ -80,12 +85,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php
             }	
         ?>
-        <?php if($nomeErr !="" OR $emailErr != "" OR $passwordErr !="") { ?>
+        <?php if($nomeErr !="" OR $emailErr != "" OR $passwordErr !="" OR $birthdateErr != "") { ?>
           <div>
               <h4>Alert!</h4>
               <p><?PHP echo $nomeErr ?></p>
               <p><?PHP echo $emailErr ?></p>
               <p><?PHP echo $passwordErr ?></p>
+              <p><?PHP echo $birthdateErr ?></p>
           </div>
         <?php }	?>
       </div>
@@ -115,7 +121,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="mb-3">
               <label class="form-label">Birthdate: </label>
-              <input name="birthdate" type="date" class="form-control"/>
+              <input name="birthdate" type="date" value="<?php echo $birthdate;?>" class="form-control"/>
             </div>
 
             <div>	
