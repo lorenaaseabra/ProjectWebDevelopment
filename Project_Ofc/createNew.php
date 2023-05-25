@@ -100,11 +100,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     <a href="createNew.php">Create new</a>
                     <a href="closeSession.php">End session</a>
                 </ul>
-
-                <form name="frmPesquisa" method="post" action="read.php">
-                    <input type="text" placeholder="Search" aria-label="Search" name="pesquisa">
-                    <button type="submit">Search</button>
-                </form>
             </div>
         </nav>
       </header>
