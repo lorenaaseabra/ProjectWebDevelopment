@@ -45,14 +45,13 @@ nav {
 
 ul a {
     color: rgb(15, 15, 88);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-decoration: none;
     display: inline-block;
-    font-size: x-large;
+    font-size: 20px;
     line-height: 2.5;
     margin: 0 20px;
 }
 
 ul a:hover {
-    color: rgb(24, 24, 130);
+    color: rgb(33, 33, 188);
 }

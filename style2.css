@@ -1,5 +1,4 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     margin-left: 10px;
@@ -17,7 +16,6 @@ nav ul {
 }
 
 nav ul a {
-    color: #fff;
     text-decoration: none;
     margin-right: 10px;
 }

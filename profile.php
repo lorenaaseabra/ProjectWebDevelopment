@@ -27,13 +27,13 @@ $result = mysqli_query($conn, $query);
 
   <body>
     <header>
-      <nav>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div>
-          <ul>
-              <a href="profile.php">Profile</a>
-              <a href="read.php">List data</a>
-              <a href="createNew.php">Create new</a>
-              <a href="closeSession.php">End session</a>
+          <ul class="navbar-nav">
+            <li class="nav-item active"><a href="profile.php">Profile</a></li>
+            <li class="nav-item active"><a href="read.php">List data</a></li>
+            <li class="nav-item active"><a href="createNew.php">Create new</a></li>
+            <li class="nav-item active"><a href="closeSession.php">End session</a></li>
           </ul>
         </div>
       </nav>
