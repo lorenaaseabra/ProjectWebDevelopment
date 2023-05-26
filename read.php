@@ -62,6 +62,7 @@ if(isset ($_POST['pesquisa'])) {
               <td width="80" scope="col"><strong>Member Number</strong></td>
               <td scope="col"><strong>Name</strong></td>
               <td scope="col"><strong>Email</strong></td>
+              <td scope="col"><strong>Birthdate</strong></td>
               <td scope="col" width="80"><strong>Update</strong></td>
               <td scope="col" width="80"><strong>Delete</strong></td>
             </tr>
@@ -70,6 +71,7 @@ if(isset ($_POST['pesquisa'])) {
               <td scope="row"><?PHP echo $row ["memberNumber"]?></td>
               <td scope="row"><?PHP echo $row ["nome"]?></td>
               <td scope="row"><?PHP echo $row ["email"]?></td>
+              <td scope="row"><?PHP echo $row ["birthdate"]?></td>
               <td scope="row"><a href="update.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">Update</a></td>
               <td scope="row"><a href="delete.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">Delete</a></td>
             </tr>
