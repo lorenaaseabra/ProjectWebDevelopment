@@ -6,7 +6,7 @@ ini_set('default_charset', 'UTF-8');
 include ("databaseConnection.php");
 
 $nomeErr = $emailErr = $passwordErr = $birthdateErr = $memberNumberErr = "";
-$nome = $email = $password = $birthdate = $hidden = $disabled = "";
+$nome = $email = $password = $birthdate = $isManager = $hidden = $disabled = "";
 
 $memberNumber = mt_rand(1000, 9999);
 
@@ -51,9 +51,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
       $password = test_input($_POST["password"]);
   }
 
+  $isManager = isset($_POST['isManager']) ? 1 : 0;
+
 	if ($nomeErr =="" AND $emailErr == "" AND $passwordErr == "" AND $memberNumberErr == "" AND $birthdateErr == ""){
-		$query = "INSERT INTO contatos (memberNumber, nome, email, password, birthdate)
-		VALUES ('$memberNumber', '$nome',  '$email', '$password', '$birthdate')";
+		$query = "INSERT INTO contatos (memberNumber, nome, email, password, birthdate, isManager)
+		VALUES ('$memberNumber', '$nome',  '$email', '$password', '$birthdate', '$isManager')";
     mysqli_query ($conn,$query);
     $disabled = "disabled";
     $hidden = "hidden";
@@ -130,6 +132,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="mb-3">
               <label class="form-label">Birthdate: </label>
               <input name="birthdate" type="date" value="<?php echo $birthdate;?>" class="form-control"/>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Manager? </label>
+              <input name="isManager" type="checkbox" value="1" class="form-check-input"/>
             </div>
 
             <div>	

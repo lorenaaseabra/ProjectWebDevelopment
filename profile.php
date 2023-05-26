@@ -47,6 +47,14 @@ $result = mysqli_query($conn, $query);
           <p><b>Member number: </b><?PHP echo $row ["memberNumber"]?></p>
           <p><b>Password: </b><?PHP echo $row ["password"]?></p>
           <p><b>Birthdate: </b><?PHP echo $row ["birthdate"]?></p>
+          <?php 
+          if($row["ismanager"] == true) {
+          ?>
+          <p>You are a <b>manager</b></p>
+          <?php } else { ?>
+            <p>Attention: the 'list' and 'add new' pages are only acessible for managers. 
+              <br>Your plan only allows the other pages. Contact us for an upgrade!</p>
+          <?php } ?>
           <button class="btn-primary"><a href="update.php?memberNumber=<?PHP echo $row ["memberNumber"]?>">Update</a></button>
         <?php } ?>
       </div>

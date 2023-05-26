@@ -5,6 +5,14 @@ ini_set('default_charset', 'UTF-8');
 
 include ("databaseConnection.php");
 
+$nome = $_SESSION['nome'];
+
+$query = "SELECT * FROM contatos WHERE nome = '$nome'";
+$result = mysqli_query($conn, $query);
+
+while ($row = mysqli_fetch_assoc ($result)) { 
+  if($row["ismanager"] == true) {
+
 $nomeErr = $emailErr = $passwordErr = $memberNumberErr = "";
 $nome = $email = $password = $hidden = $disabled = "";
 
@@ -147,6 +155,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   </body>
 </html>
 <?php
+} 
+else {
+  ?>
+  <p>Attention: This page is only for managers</p>
+  <?php
+}
+}
 // close connection
 mysqli_close ($conn);
 

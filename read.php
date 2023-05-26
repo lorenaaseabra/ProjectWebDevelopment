@@ -7,6 +7,14 @@ if( $_SESSION['login'] == TRUE){
 
 include ("databaseConnection.php");
 
+$nome = $_SESSION['nome'];
+
+$query = "SELECT * FROM contatos WHERE nome = '$nome'";
+$result = mysqli_query($conn, $query);
+
+while ($row = mysqli_fetch_assoc ($result)) { 
+  if($row["ismanager"] == true) {
+
 if(isset ($_POST['pesquisa'])) {
 	$query = "SELECT * FROM contatos WHERE nome LIKE '%$_POST[pesquisa]%' OR email LIKE '%$_POST[pesquisa]%'";
 	$result = mysqli_query ($conn, $query);	
@@ -74,6 +82,13 @@ if(isset ($_POST['pesquisa'])) {
   </body>
 </html>
 <?php
+} 
+else {
+  ?>
+  <p>Attention: This page is only for managers</p>
+  <?php
+}
+}
 // close connection
 mysqli_close ($conn);
 
