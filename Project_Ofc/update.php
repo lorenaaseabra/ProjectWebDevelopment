@@ -93,26 +93,32 @@ $row = mysqli_fetch_assoc ($result);
     </header>
     <main>
 
-    <div>
-      <?php
-          if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $birthdateErr == "") {
-      ?>
-      <div >
-        <h4>Data updated successfully</h4>
-      </div>
-      <?php
-          }	
-      ?>
-		  <?php if($nomeErr !="" OR $emailErr != "" or $birthdateErr != "") { ?>
-            <div">
-			        <h4>Alert!</h4>
-              <hr>
-              <p><?PHP echo $nomeErr ?></p>
-              <p><?PHP echo $emailErr ?></p> 
-              <p><?PHP echo $birthdateErr ?></p>
-            </div>
-      <?php }	?>
-    </div>
+      <script>
+          // Função para exibir o alerta no Chrome
+          function showAlert(message) {
+            if (navigator.userAgent.indexOf("Chrome") != -1) {
+              alert(message);
+            }
+          }
+
+          // Verificar se há sucesso ou erros e exibir o alerta correspondente
+          <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && $nomeErr == "" && $emailErr == "" && $birthdateErr == "") { ?>
+            showAlert("Data updated successfully");
+          <?php } elseif ($nomeErr != "" || $emailErr != "" || $birthdateErr != "") { ?>
+            var errorMessage = "Alert!\n\n";
+            <?php if ($nomeErr != "") { ?>
+              errorMessage += "<?php echo $nomeErr ?>\n";
+            <?php } ?>
+            <?php if ($emailErr != "") { ?>
+              errorMessage += "<?php echo $emailErr ?>\n";
+            <?php } ?>
+            <?php if ($birthdateErr != "") { ?>
+              errorMessage += "<?php echo $birthdateErr ?>\n";
+            <?php } ?>
+            showAlert(errorMessage);
+          <?php } ?>
+      </script>
+
     <div>
       <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
           <div class="mb-3">

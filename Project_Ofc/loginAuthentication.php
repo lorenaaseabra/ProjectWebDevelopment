@@ -19,33 +19,33 @@ if(!empty( $_SESSION['login'])){
     header ('Location: profile.php');
 }else{
   if($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["email"])) {
-      $emailErr = "Email is required!";
-    }else{
-      $email = test_input($_POST["email"]);
-      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $emailErr = "Invalid email format";
-      }
-    }
-
-    if (empty($_POST["password"])) {
-      $nomeErr = "Password is required!";
-    }else{
-      $nome = test_input($_POST["password"]);
-    }
-    
-    if ($passwordErr =="" AND $emailErr == ""){
-      $query = "SELECT * FROM contatos WHERE email='$_POST[email]' AND  password='$_POST[password]'";
-      $result = mysqli_query ($conn,$query);
-      $row = mysqli_fetch_assoc ($result);
-      if (mysqli_num_rows($result) > 0){
-        $_SESSION['nome'] = $row['nome'];
-        $_SESSION['login'] = TRUE;
-        header ('Location: profile.php');
+      if (empty($_POST["email"])) {
+        $emailErr = "Email is required!";
       }else{
-        $autErr ="Please verify you authentication data!";
+        $email = test_input($_POST["email"]);
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          $emailErr = "Invalid email format";
+        }
       }
-    }
+
+      if (empty($_POST["password"])) {
+        $nomeErr = "Password is required!";
+      }else{
+        $nome = test_input($_POST["password"]);
+      }
+      
+      if ($passwordErr =="" AND $emailErr == ""){
+        $query = "SELECT * FROM contatos WHERE email='$_POST[email]' AND  password='$_POST[password]'";
+        $result = mysqli_query ($conn,$query);
+        $row = mysqli_fetch_assoc ($result);
+        if (mysqli_num_rows($result) > 0){
+          $_SESSION['nome'] = $row['nome'];
+          $_SESSION['login'] = TRUE;
+          header ('Location: profile.php');
+        }else{
+          $autErr ="Please verify you authentication data!";
+        }
+      }
   }
 }
 
@@ -65,19 +65,30 @@ if(!empty( $_SESSION['login'])){
 
   <body>
     <main>
-      <?php
-        if($_SERVER["REQUEST_METHOD"] == "POST" AND ($passwordErr !="" OR $emailErr != "" OR $autErr !="")) {
-      ?>
-      <div>
-        <h4>Alert!</h4>
-        <hr>
-        <?php
-          echo $autErr;
-          echo $emailErr;
-          echo $passwordErr;
-        ?>
-      </div>
-      <?php } ?>
+      <script>
+          // Função para exibir o alerta no Chrome
+          function showAlert(message) {
+            if (navigator.userAgent.indexOf("Chrome") != -1) {
+              alert(message);
+            }
+          }
+
+          // Verificar se há erros e exibir o alerta correspondente
+          <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && ($passwordErr != "" || $emailErr != "" || $autErr != "")) { ?>
+            var errorMessage = "Alert!\n\n";
+            <?php if ($autErr != "") { ?>
+              errorMessage += "<?php echo $autErr ?>\n";
+            <?php } ?>
+            <?php if ($emailErr != "") { ?>
+              errorMessage += "<?php echo $emailErr ?>\n";
+            <?php } ?>
+            <?php if ($passwordErr != "") { ?>
+              errorMessage += "<?php echo $passwordErr ?>\n";
+            <?php } ?>
+            showAlert(errorMessage);
+          <?php } ?>
+      </script>
+
       <div class="container">
           <form name="frmLogin" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">          
               <div class="loginmsg">

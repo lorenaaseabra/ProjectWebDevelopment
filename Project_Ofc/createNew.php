@@ -68,28 +68,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   </head>
 
   <body>
-    
-      <div>
-        <?php
-            if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $passwordErr =="") {
-        ?>
-        <div>
-            <h4>Your registration was successful!</h4>
-        </div>
-        <?php
-            }	
-        ?>
-        <?php if($nomeErr !="" OR $emailErr != "" OR $passwordErr !="") { ?>
-          <div>
-              <h4>Alert!</h4>
-              <p><?PHP echo $nomeErr ?></p>
-              <p><?PHP echo $emailErr ?></p>
-              <p><?PHP echo $passwordErr ?></p>
-          </div>
-        <?php }	?>
-      </div>
+    <script>
+            // Função para exibir o alerta no Chrome
+            function showAlert(message) {
+            if (navigator.userAgent.indexOf("Chrome") != -1) {
+                alert(message);
+            }
+            }
 
-      <header>
+            // Verificar se há sucesso ou erros e exibir o alerta correspondente
+            <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && $nomeErr == "" && $emailErr == "" && $birthdateErr == "") { ?>
+            showAlert("Data updated successfully");
+            <?php } elseif ($nomeErr != "" || $emailErr != "" || $birthdateErr != "") { ?>
+            var errorMessage = "Alert!\n\n";
+            <?php if ($nomeErr != "") { ?>
+                errorMessage += "<?php echo $nomeErr ?>\n";
+            <?php } ?>
+            <?php if ($emailErr != "") { ?>
+                errorMessage += "<?php echo $emailErr ?>\n";
+            <?php } ?>
+            <?php if ($birthdateErr != "") { ?>
+                errorMessage += "<?php echo $birthdateErr ?>\n";
+            <?php } ?>
+            showAlert(errorMessage);
+            <?php } ?>
+    </script>
+
+    <header>
         <nav>
             <div>
                 <ul>
@@ -100,9 +105,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 </ul>
             </div>
         </nav>
-      </header>
+    </header>
 
-<main>
+    <main>
       <div class="container">
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
             <div class="mb-3">
@@ -137,7 +142,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </form>
       </div>
-
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>

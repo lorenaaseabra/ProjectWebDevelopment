@@ -75,26 +75,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
   <body>
     <main>
-      <div>
-        <?php
-          if($_SERVER["REQUEST_METHOD"] == "POST" AND $nomeErr =="" AND $emailErr == "" AND $passwordErr =="") {
-        ?>
-          <div>
-            <h4>Your registration was successful!</h4>
-          </div>
-        <?php
-            }	
-        ?>
-        <?php if($nomeErr !="" OR $emailErr != "" OR $passwordErr !="" OR $birthdateErr != "") { ?>
-          <div>
-              <h4>Alert!</h4>
-              <p><?PHP echo $nomeErr ?></p>
-              <p><?PHP echo $emailErr ?></p>
-              <p><?PHP echo $passwordErr ?></p>
-              <p><?PHP echo $birthdateErr ?></p>
-          </div>
-        <?php }	?>
-      </div>
+      <script>
+        // Função para exibir o alerta no Chrome
+        function showAlert(message) {
+          if (navigator.userAgent.indexOf("Chrome") != -1) {
+            alert(message);
+          }
+        }
+
+        // Verificar se há sucesso ou erros e exibir o alerta correspondente
+        <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && $nomeErr == "" && $emailErr == "" && $passwordErr == "") { ?>
+          showAlert("Your registration was successful!");
+        <?php } elseif ($nomeErr != "" || $emailErr != "" || $passwordErr != "" || $birthdateErr != "") { ?>
+          var errorMessage = "Alert!\n\n";
+          <?php if ($nomeErr != "") { ?>
+            errorMessage += "<?php echo $nomeErr ?>\n";
+          <?php } ?>
+          <?php if ($emailErr != "") { ?>
+            errorMessage += "<?php echo $emailErr ?>\n";
+          <?php } ?>
+          <?php if ($passwordErr != "") { ?>
+            errorMessage += "<?php echo $passwordErr ?>\n";
+          <?php } ?>
+          <?php if ($birthdateErr != "") { ?>
+            errorMessage += "<?php echo $birthdateErr ?>\n";
+          <?php } ?>
+          showAlert(errorMessage);
+        <?php } ?>
+      </script>
 
       <div class="container">
         <form name="frmInserir" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
